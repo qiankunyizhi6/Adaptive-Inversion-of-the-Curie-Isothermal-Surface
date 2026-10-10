@@ -29,6 +29,7 @@ System, the Qinling Orogen and the Taihang Mountains–Shanxi Rift — are marke
 - [Study area and input data](#study-area-and-input-data)
 - [Method](#method)
 - [Output maps](#output-maps)
+- [Cross-validation](#cross-validation)
 - [Repository layout](#repository-layout)
 - [Installation](#installation)
 - [Usage](#usage)
@@ -236,6 +237,40 @@ nodes are direct fits (`direct`), with a single node filled by the fallback band
 
 ---
 
+## Cross-validation
+
+The 625 heat-flow sites of the region are split into five **spatially separated** folds, so
+that neighbouring sites cannot fall on opposite sides of the split, and each candidate
+Curie-depth field is converted to surface heat flow on the held-out fold.
+
+![Five-fold spatial cross-validation splits](validation/five_fold_spatial_cv_splits.png)
+
+*Five-fold spatial split of the heat-flow sites; the last panel shows all 625 sites. The
+folds are built block by block so that the test points are spatially separated from the
+training points.*
+
+Heat flow is used to build the reference Curie depths, so its agreement with a Curie-depth
+model is **not** an independent measure of accuracy and is **not** used to tune the model
+here. It is reported in [`validation/cross_validation_summary.txt`](validation/cross_validation_summary.txt)
+only so that the recovered field can be compared with published models in a common currency:
+
+| Model | RMSE (mW m⁻²) | MAE (mW m⁻²) | Correlation |
+| --- | --- | --- | --- |
+| *final_curie_depth* (this study) | **33.48 ± 0.93** | **28.90 ± 0.79** | 0.158 ± 0.067 |
+| *data_jlm* (this study) | 34.97 ± 1.22 | 31.33 ± 0.64 | 0.053 ± 0.028 |
+| *curie_depth_map* (this study) | 35.95 ± 1.22 | 32.50 ± 0.68 | 0.201 ± 0.055 |
+| 41598_2017_srep45129 | 46.58 ± 0.55 | 42.87 ± 0.90 | 0.217 ± 0.067 |
+| *curie_isotherm_depth_xyz* | 54.60 ± 1.55 | 48.88 ± 1.66 | 0.113 ± 0.042 |
+
+The RMSE and MAE of the models produced in this study are the lowest of the set, while the
+linear correlation with the observed heat flow stays low for **every** model, including the
+published ones. The low correlation is therefore a property of the heat-flow-to-Curie-depth
+comparison itself, controlled jointly by the adopted thermophysical parameters, by the
+conversion model and by the sparse and uneven distribution of the heat-flow sites; it is not
+a specific deficiency of one inversion.
+
+---
+
 ## Repository layout
 
 ```
@@ -248,6 +283,7 @@ CurieInversion_Ordos/
 │   └── clean_blocks.py                                # overlap removal / gap filling
 ├── figures/                                           # example result figures
 ├── example_output/                                    # example run: parameters, predictions, report
+├── validation/                                        # spatial cross-validation materials
 ├── config.example.json
 ├── requirements.txt
 └── LICENSE

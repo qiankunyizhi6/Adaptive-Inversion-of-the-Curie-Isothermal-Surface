@@ -1,0 +1,74 @@
+Cross-validation: heat-flow agreement of the candidate Curie-depth models
+=========================================================================
+
+Purpose
+-------
+Heat flow is used in this work to build the reference Curie depths, so the agreement
+between a Curie-depth model and the measured heat flow is NOT an independent measure of
+accuracy and is NOT used to select or tune the model. It is reported here only as
+supporting material, so that the recovered Curie-depth field can be compared with
+independently published Curie-depth models in a common currency.
+
+Model names (a) and (b) are two variants of the model produced by this repository; the
+remaining names are the published models that the study compares against.
+
+
+1. Five-fold cross-validation
+-----------------------------
+The 625 heat-flow sites of the region are split into five spatially separated folds, so
+that neighbouring sites cannot fall on opposite sides of the split. The Curie-depth field
+is converted to surface heat flow with the same heat-conduction model for every candidate
+model, and the predicted heat flow is compared with the observed heat flow on the held-out
+fold. Two of the folds are shown below; the splits are plotted in
+five_fold_spatial_cv_splits.png.
+
+  Fold 1: 506 training / 131 validation points
+  Fold 2: 508 training / 129 validation points
+  Fold 3: 509 training / 128 validation points
+  Fold 4: 512 training / 125 validation points
+  Fold 5: 513 training / 124 validation points
+
+  Average: 509 training / 127 validation points per fold
+
+Mean +/- standard deviation over the five folds:
+
+  model                          RMSE (mW/m^2)         MAE (mW/m^2)         Correlation
+  -------------------------------------------------------------------------------------
+  final_curie_depth (a)          33.48 +/- 0.93        28.90 +/- 0.79        0.158 +/- 0.067
+  data_jlm (b)                   34.97 +/- 1.22        31.33 +/- 0.64        0.053 +/- 0.028
+  curie_depth_map (a)            35.95 +/- 1.22        32.50 +/- 0.68        0.201 +/- 0.055
+  41598_2017_srep45129           46.58 +/- 0.55        42.87 +/- 0.90        0.217 +/- 0.067
+  curie_isotherm_depth_xyz       54.60 +/- 1.55        48.88 +/- 1.66        0.113 +/- 0.042
+
+  Ranked by RMSE (best first):
+    1. final_curie_depth (a)       33.48
+    2. data_jlm (b)                34.97
+    3. curie_depth_map (a)         35.95
+    4. 41598_2017_srep45129        46.58
+    5. curie_isotherm_depth_xyz    54.60
+
+
+2. All-data evaluation
+----------------------
+Same comparison, using all the heat-flow sites at once:
+
+  model                          RMSE (mW/m^2)         MAE (mW/m^2)         Correlation
+  -------------------------------------------------------------------------------------
+  final_curie_depth (a)          33.59                 29.00                 0.142
+  data_jlm (b)                   34.99                 31.36                 0.045
+  curie_depth_map (a)            35.92                 32.46                 0.190
+  41598_2017_srep45129           46.61                 42.86                 0.201
+  curie_isotherm_depth_xyz       54.39                 48.57                 0.105
+
+
+Interpretation
+--------------
+The RMSE and MAE of the models produced in this study are the lowest of the set, while the
+linear correlation with the observed heat flow remains low for every model, including the
+published ones (r between about 0.05 and 0.22). The low correlation is therefore a property
+of the heat-flow-to-Curie-depth comparison itself - it is controlled jointly by the adopted
+thermophysical parameters, by the conversion model and by the sparse and uneven distribution
+of the heat-flow sites - and not a specific deficiency of one inversion. This is why the
+accuracy of the inversion is assessed in the paper through the fit to the reference depths
+and through the sensitivity and cross-validation experiments, rather than through heat-flow
+agreement.

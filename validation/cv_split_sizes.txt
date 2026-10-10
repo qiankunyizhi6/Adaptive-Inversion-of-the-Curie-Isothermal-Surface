@@ -1,0 +1,24 @@
+5-Fold Cross Validation Summary
+==================================================
+
+Fold 1:
+  Training set: 506 points
+  Validation set: 131 points
+Fold 2:
+  Training set: 508 points
+  Validation set: 129 points
+Fold 3:
+  Training set: 509 points
+  Validation set: 128 points
+Fold 4:
+  Training set: 512 points
+  Validation set: 125 points
+Fold 5:
+  Training set: 513 points
+  Validation set: 124 points
+
+==================================================
+Total training points across all folds: 2548
+Total validation points across all folds: 637
+Average training points per fold: 509
+Average validation points per fold: 127
