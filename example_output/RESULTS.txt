@@ -1,0 +1,55 @@
+Block-wise Bayesian inversion of the Curie isothermal surface
+Example run on the Ordos Basin and surrounding regions
+======================================================================
+
+INPUT DATA
+  magnetic anomaly grid  : data/ordos_magnetic_anomaly.txt   (281 x 401 nodes, 0.05 deg)
+  reference Curie depths : data/curie_depth_reference_points.txt  (180 points)
+  tectonic blocks        : blocks/block_1_fixed.txt ... block_14_fixed.txt
+
+SETTINGS
+  output resolution      : 0.2 deg
+  TPE trials per block   : 100
+  map extent             : 101-117 E, 32-42 N
+
+FIT AT THE REFERENCE POINTS
+  RMSE                   : 5.371 km
+  MAE                    : 4.045 km
+  bias (predicted - ref) : -0.623 km
+  Pearson r              : 0.756
+  reference depth range  : 15.0 - 45.0 km
+  predicted depth range  : 21.6 - 41.9 km
+
+UNCERTAINTY AT THE REFERENCE POINTS (computed after the optimization)
+  median dZb             : 2.094 km
+  dZb <=  5 km           : 173 / 180 points
+  dZb <= 10 km           : 180 / 180 points
+
+FULL-MAP FILLING
+  direct         : 179 nodes
+  fallback_band  : 1 nodes
+
+OPTIMAL SPECTRAL PARAMETERS BY BLOCK
+  block     status                  b2   window  Zt band (km^-1)       Z0 band (km^-1)        RMSE(km)   npts
+  block_1   optimized              0.9      5.0  [0.04411, 0.07145]  [0.01593, 0.02934]     1.077      6
+  block_2   no_true_points_default   1.0      3.0  [0.03000, 0.08000]  [0.00500, 0.05500]  1000.000      0
+  block_3   optimized              1.2      4.8  [0.04358, 0.08606]  [0.00533, 0.02703]     2.149      3
+  block_4   optimized              0.4      3.2  [0.05767, 0.08893]  [0.00826, 0.04954]     8.264     14
+  block_5   optimized              0.0      2.6  [0.05297, 0.07418]  [0.00356, 0.05238]     5.831     25
+  block_6   optimized              0.5      5.0  [0.04128, 0.06859]  [0.01690, 0.03974]     3.135     11
+  block_7   optimized              0.7      3.0  [0.05281, 0.08713]  [0.01706, 0.05245]     2.600      9
+  block_8   optimized              2.7      4.6  [0.04687, 0.06744]  [0.00204, 0.02263]     4.528     17
+  block_9   optimized              1.5      2.2  [0.06392, 0.07871]  [0.01154, 0.03535]     5.266     20
+  block_10  optimized              1.2      2.4  [0.05323, 0.08293]  [0.00298, 0.05205]     5.899     19
+  block_11  optimized              0.4      3.2  [0.02651, 0.08500]  [0.01792, 0.02343]     4.838      3
+  block_12  optimized              0.1      2.4  [0.05591, 0.06538]  [0.01915, 0.04077]     5.835      6
+  block_13  optimized              2.1      3.2  [0.05337, 0.07943]  [0.00479, 0.03502]     4.784     40
+  block_14  optimized              0.9      4.8  [0.05547, 0.08672]  [0.00628, 0.03581]     4.083      6
+
+  Note: block_2 contains no reference point, so the program falls back to the
+        default spectral parameters there (status = no_true_points_default).
+        The report of its RMSE is a placeholder and is not a fit quality.
+
+FIGURES      see figures/
+PER-POINT    example_output/block_training_predictions.txt
+REVIEW LOG   example_output/review_history.json
