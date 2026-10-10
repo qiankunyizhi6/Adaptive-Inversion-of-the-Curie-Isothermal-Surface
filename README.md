@@ -30,6 +30,7 @@ System, the Qinling Orogen and the Taihang Mountains–Shanxi Rift — are marke
 - [Method](#method)
 - [Output maps](#output-maps)
 - [Cross-validation](#cross-validation)
+- [Comparison with previous models](#comparison-with-previous-models)
 - [Repository layout](#repository-layout)
 - [Installation](#installation)
 - [Usage](#usage)
@@ -271,6 +272,43 @@ a specific deficiency of one inversion.
 
 ---
 
+## Comparison with previous models
+
+The recovered field can be compared with three independently published Curie-depth models of
+the same region along a profile at 37° N, together with the CRUST1.0 Moho depth, the Bouguer
+gravity anomaly and the topography:
+
+![Latitude profile at 37 N](method_comparison/latitude_profile_37N.png)
+
+*Curie depth along 37° N for this study and for the models of Li et al. (2017), Gao et al.
+(2015) and Zhou et al. (2024), with the CRUST1.0 Moho depth and the Bouguer gravity anomaly.
+The vertical dashed lines mark the western margin of the Ordos Basin, the eastern margin and
+the Taihang Mountains.*
+
+Within the basin interior the four models agree on a deep magnetic bottom and on the general
+shape of the profile, whereas their local amplitudes differ; the additional lateral detail of
+the present model reflects the block-wise optimization of the spectral parameters. Across the
+western margin the published models converge towards a much shallower Curie depth, while the
+present model stays close to the Moho depth.
+
+The heat-flow agreement of the same models is summarised below; further details, including
+the scatter of predicted against observed heat flow, are in
+[`method_comparison/`](method_comparison/README.md).
+
+| Heat-flow agreement | RMSE (mW m⁻²) | MAE (mW m⁻²) | Pearson *r* |
+| --- | --- | --- | --- |
+| *data_jlm* (this study) | **25.33** | **22.28** | 0.034 |
+| *final_curie_depth* (this study) | 26.23 | 22.86 | 0.211 |
+| *curie_depth_map* (this study) | 26.30 | 23.68 | 0.276 |
+| 41598_2017_srep45129 | 41.30 | 37.64 | 0.306 |
+| *curie_isotherm_depth_xyz* | 57.07 | 52.62 | 0.042 |
+
+The RMSE and MAE of the models of this study are the lowest of the set, whereas the linear
+correlation with the observed heat flow stays between 0.03 and 0.31 for every model,
+including the published ones.
+
+---
+
 ## Repository layout
 
 ```
@@ -284,6 +322,7 @@ CurieInversion_Ordos/
 ├── figures/                                           # example result figures
 ├── example_output/                                    # example run: parameters, predictions, report
 ├── validation/                                        # spatial cross-validation materials
+├── method_comparison/                                 # comparison with previous models
 ├── config.example.json
 ├── requirements.txt
 └── LICENSE
