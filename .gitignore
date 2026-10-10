@@ -1,0 +1,40 @@
+# Byte-compiled / cached files
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Distribution / packaging
+build/
+dist/
+*.egg-info/
+.eggs/
+
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+
+# Editors and IDEs
+.vscode/
+.idea/
+*.swp
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Output produced by the inversion program
+Curie_Depth_Block_Bayes_ThreeClassMagPrior/
+review_maps/
+*.log
+
+# Interactive digitizer output (raw polygons before cleaning)
+block_[0-9].txt
+block_[0-9][0-9].txt
+
+# Large local data
+*.nc
+*.grd

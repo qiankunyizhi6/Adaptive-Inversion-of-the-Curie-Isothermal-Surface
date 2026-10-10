@@ -1,0 +1,10 @@
+{
+  "data_file": "data/ordos_magnetic_anomaly.txt",
+  "measured_zb_file": "data/curie_depth_reference_points.txt",
+  "block_dir": "blocks",
+  "output_dir": "Curie_Depth_Block_Bayes_ThreeClassMagPrior",
+  "lon_range": [101.0, 117.0],
+  "lat_range": [32.0, 42.0],
+  "output_resolution": 0.2,
+  "n_trials": 100
+}
