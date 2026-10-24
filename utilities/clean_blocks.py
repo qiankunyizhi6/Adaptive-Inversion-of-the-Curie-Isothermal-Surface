@@ -15,7 +15,7 @@ overlap slightly, leave narrow gaps between neighbouring blocks, or be invalid
 6. write the repaired polygons as ``block_<N>_fixed.txt``.
 
 The repaired files are the ones read by
-``curie_block_bayes_three_class_prior_inversion.py``.
+``curie_block_bayes_inversion.py``.
 
 Usage
 -----

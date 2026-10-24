@@ -10,16 +10,18 @@ Source code for the block-wise, multi-constraint and Bayesian-optimized inversio
 The de-fractal spectral method is made adaptive: instead of selecting the fractal index,
 the moving-window size and the spectral fitting bands by hand, these four parameters are
 searched jointly with a **Tree-structured Parzen Estimator (TPE)** inside each tectonic
-block, under an objective function that combines a point-fitting term, a
-spatial-distribution constraint and a valid-point coverage penalty.
+block, under an objective function that combines a point-fitting term, a spatial-distribution
+constraint and a valid-point coverage penalty. The three terms are normalized so that they
+are dimensionless and of comparable magnitude, which means that the objective contains no
+weighting coefficients.
 
 ![Curie depth map of the Ordos Basin and surrounding regions](figures/curie_depth_map.png)
 
 *Curie isothermal surface obtained for the Ordos Basin and surrounding regions. The basin
-interior is the deepest part of the study area (36–40 km in the western and northern parts),
-whereas the surrounding tectonic belts — the northeastern Tibetan Plateau, the Qilian Fold
-System, the Qinling Orogen and the Taihang Mountains–Shanxi Rift — are markedly shallower
-(20–30 km).*
+interior is the deepest part of the study area (up to about 42 km in the western and northern
+parts), whereas the surrounding tectonic belts — the northeastern Tibetan Plateau, the Qilian
+Fold System, the Qinling Orogen and the Taihang Mountains–Shanxi Rift — are markedly shallower
+(about 20–30 km).*
 
 ---
 
@@ -50,21 +52,21 @@ The numbers below come from the example run shipped with this repository
 
 | Quantity | Value |
 | --- | --- |
-| RMSE | **5.371 km** |
-| MAE | **4.045 km** |
-| Bias (predicted − reference) | −0.623 km |
-| Pearson *r* | 0.756 |
+| RMSE | **6.985 km** |
+| MAE | **5.289 km** |
+| Bias (predicted − reference) | −2.614 km |
+| Pearson *r* | 0.595 |
 | Reference depth range | 15.0 – 45.0 km |
-| Predicted depth range | 21.6 – 41.9 km |
+| Predicted depth range | 18.7 – 41.9 km |
 
 **Uncertainty**, computed after the optimization from the standard errors of the two fitted
 spectral slopes and *not* used inside the objective function:
 
 | Quantity | Value |
 | --- | --- |
-| Median ΔZb | **2.094 km** |
-| ΔZb ≤ 5 km | 173 / 180 points |
-| ΔZb ≤ 10 km | 180 / 180 points |
+| Median ΔZb | **1.682 km** |
+| ΔZb ≤ 5 km | 166 / 180 points |
+| ΔZb ≤ 10 km | 179 / 180 points |
 
 The misfit is dominated by a small number of isolated reference points; the median
 uncertainty is an order of magnitude smaller than the depth range of the model, and the
@@ -78,26 +80,26 @@ locally resolved description of the Curie surface.
 
 | Block | *b2* | Window (°) | Zt band (km⁻¹) | Z0 band (km⁻¹) | RMSE (km) | Reference points |
 | --- | --- | --- | --- | --- | --- | --- |
-| 1 | 0.9 | 5.0 | 0.04411 – 0.07145 | 0.01593 – 0.02934 | 1.077 | 6 |
+| 1 | 1.4 | 5.0 | 0.04186 – 0.08605 | 0.01747 – 0.02987 | 1.043 | 6 |
 | 2 | 1.0 | 3.0 | default | default | — | 0 |
-| 3 | 1.2 | 4.8 | 0.04358 – 0.08606 | 0.00533 – 0.02703 | 2.149 | 3 |
-| 4 | 0.4 | 3.2 | 0.05767 – 0.08893 | 0.00826 – 0.04954 | 8.264 | 14 |
-| 5 | 0.0 | 2.6 | 0.05297 – 0.07418 | 0.00356 – 0.05238 | 5.831 | 25 |
-| 6 | 0.5 | 5.0 | 0.04128 – 0.06859 | 0.01690 – 0.03974 | 3.135 | 11 |
-| 7 | 0.7 | 3.0 | 0.05281 – 0.08713 | 0.01706 – 0.05245 | 2.600 | 9 |
-| 8 | 2.7 | 4.6 | 0.04687 – 0.06744 | 0.00204 – 0.02263 | 4.528 | 17 |
-| 9 | 1.5 | 2.2 | 0.06392 – 0.07871 | 0.01154 – 0.03535 | 5.266 | 20 |
-| 10 | 1.2 | 2.4 | 0.05323 – 0.08293 | 0.00298 – 0.05205 | 5.899 | 19 |
-| 11 | 0.4 | 3.2 | 0.02651 – 0.08500 | 0.01792 – 0.02343 | 4.838 | 3 |
-| 12 | 0.1 | 2.4 | 0.05591 – 0.06538 | 0.01915 – 0.04077 | 5.835 | 6 |
-| 13 | 2.1 | 3.2 | 0.05337 – 0.07943 | 0.00479 – 0.03502 | 4.784 | 40 |
-| 14 | 0.9 | 4.8 | 0.05547 – 0.08672 | 0.00628 – 0.03581 | 4.083 | 6 |
+| 3 | 1.5 | 4.0 | 0.04279 – 0.06175 | 0.01966 – 0.02425 | 0.273 | 1 |
+| 4 | 0.4 | 2.4 | 0.06120 – 0.08766 | 0.00582 – 0.04995 | 8.148 | 13 |
+| 5 | 1.9 | 4.2 | 0.04955 – 0.07165 | 0.00434 – 0.02092 | 3.989 | 9 |
+| 6 | 2.1 | 5.0 | 0.04487 – 0.07151 | 0.01239 – 0.03159 | 3.135 | 11 |
+| 7 | 1.0 | 3.0 | 0.06386 – 0.08435 | 0.01323 – 0.04707 | 2.956 | 9 |
+| 8 | 1.4 | 4.8 | 0.05804 – 0.07810 | 0.01041 – 0.05456 | 5.271 | 17 |
+| 9 | 1.1 | 2.2 | 0.04631 – 0.08488 | 0.01705 – 0.03361 | 5.682 | 14 |
+| 10 | 2.5 | 3.2 | 0.03577 – 0.06545 | 0.01874 – 0.02715 | 4.816 | 7 |
+| 11 | 1.7 | 2.8 | 0.02700 – 0.06111 | 0.00410 – 0.02222 | 4.685 | 3 |
+| 12 | 0.5 | 4.4 | 0.06378 – 0.07252 | 0.01683 – 0.03959 | 6.087 | 6 |
+| 13 | 2.2 | 3.2 | 0.04746 – 0.08895 | 0.00341 – 0.03395 | 4.780 | 40 |
+| 14 | 1.9 | 4.8 | 0.03128 – 0.07137 | 0.00460 – 0.02399 | 3.143 | 1 |
 
 > Block 2 contains no reference point, so the optimizer falls back to the default spectral
 > parameters there (`status = no_true_points_default`). The values quoted for its RMSE are
 > placeholders and do not represent a fit quality.
 
-The optimal parameters differ substantially between blocks (*b2* from 0.0 to 2.7, window
+The optimal parameters differ substantially between blocks (*b2* from 0.4 to 2.5, window
 size from 2.2° to 5.0°), which is the quantitative justification for inverting the study
 area block by block instead of applying one parameter set everywhere.
 
@@ -120,6 +122,7 @@ The block division follows the major fault zones and basement boundaries of the 
 | --- | --- | --- |
 | `data/ordos_magnetic_anomaly.txt` | `lon lat magnetic_anomaly` | Crustal magnetic anomaly grid (281 × 401 nodes, 0.05°) derived from EMAG2v3 |
 | `data/curie_depth_reference_points.txt` | `lon lat Zb_km` | 180 reference Curie depths converted from measured heat flow |
+| `data/bouguer_gravity_wgm2012.txt` | `lon lat gravity_mGal` | Complete Bouguer anomaly of the WGM2012 model (2′, 95–124° E, 30–44° N), used for the comparison with the crustal structure |
 | `data/fault_traces.txt` | `>` header, then `lon, lat` | Multi-line fault traces in EPSG:4326 |
 | `blocks/block_<N>_fixed.txt` | `lon lat` | Closed polygon of block `N`, non-overlapping, tiling the study area |
 
@@ -156,62 +159,61 @@ minimum band width and a minimum number of spectral points per band are enforced
 
 ### 3. Objective function
 
+The objective function is the sum of dimensionless terms, so that no weighting coefficients
+have to be introduced:
+
 ```
-L = lambda_p * L_p  +  lambda_s * L_s  +  lambda_m * L_m
+L = Lp / std_ref  +  Lpair / std_ref  +  (1 - rho)  +  rmis  +  (1 - Nv / N)
 ```
 
-* **`L_p` — point-fitting term**
+* **`Lp` — point-fitting term**
 
   ```
-  L_p = sqrt( (1/Nv) * sum_i ( Zb_inv,i - Zb_ref,i )^2 )
+  Lp = sqrt( (1/Nv) * sum_i ( Zb_inv,i - Zb_ref,i )^2 )
   ```
 
   All valid reference points enter with equal weight, so no east–west depth trend is
   imposed a priori.
 
-* **`L_s` — spatial-distribution constraint**
+* **`Lpair` — pairwise depth-difference term**
 
   ```
-  L_s = gamma_1 * L_pair + gamma_2 * L_corr + gamma_3 * L_sign
+  Lpair = sqrt( sum_ij omega_ij * [ (Zb_inv,i - Zb_inv,j) - (Zb_ref,i - Zb_ref,j) ]^2
+                / sum_ij omega_ij )
   ```
 
-  `L_pair` compares the depth differences of point pairs with the distance weight
-  `omega_ij = 1 / (d_ij + 0.05)`, `L_corr` penalises departure of the Pearson correlation
-  from 1, and `L_sign` penalises sign inconsistencies between the inverted and the reference
-  depth differences.
+  with the distance weight `omega_ij = 1 / (d_ij + 0.05)`. This term constrains the spatial
+  relief of the inverted depth field rather than its absolute level.
 
-* **`L_m` — valid-point coverage penalty**
+* **`1 - rho` — correlation loss**
+
+  `rho` is the Pearson correlation coefficient between the inverted and the reference
+  depths, so this term penalises a wrong overall spatial trend.
+
+* **`rmis` — relative depth-ordering term**
 
   ```
-  L_m = 1 - Nv / N
+  rmis = (1/Nv) * sum_ij I[ sgn(Zb_inv,i - Zb_inv,j) != sgn(Zb_ref,i - Zb_ref,j) ]
   ```
+
+  It penalises point pairs whose relative deep/shallow order is reversed.
+
+* **`Lm = 1 - Nv / N` — valid-point coverage penalty**
 
   which discourages parameter combinations that leave too few valid reference points inside
   the moving window.
 
-The weights are **not** tuned by hand. They are determined by a nested optimization in which
-an outer TPE search over the weight space is combined with the inner optimization of the
-spectral parameters, and each weight combination is scored by **spatial cross-validation**
-so that neighbouring reference points cannot fall on opposite sides of the split. The values
-that are optimal for this study area are `lambda_p = 1`, `lambda_s = 1.10`,
-`gamma_1 = gamma_2 = 0.20`, `gamma_3 = 0.60`, `lambda_m = 30`.
+The two depth-misfit terms are expressed in kilometres and are divided by `std_ref`, the
+standard deviation of the reference depths of the block. Every term is therefore
+dimensionless and of comparable magnitude, so that the three constraints enter the objective
+with equal weight and no weighting coefficients have to be chosen.
 
 ### 4. Block-wise inversion
 
 A single parameter set cannot represent the whole study area, because the magnetic-anomaly
 spectra differ between the stable basin interior and the surrounding orogenic and rift
 belts. The four spectral parameters are therefore optimized independently inside each of the
-14 blocks, and the full map is computed block by block. A final interactive review stage
-allows individual blocks to be re-optimized with a global "deeper / shallower" feedback.
-
-Each review round re-optimizes one block and records the parameters, RMSE, spatial loss,
-pairwise-difference RMSE, spatial correlation and sign-mismatch rate before and after the
-change; the log is written to `review_maps/review_history.json`.
-
-![Block review round 5](figures/block_review_round_05.png)
-
-*Interactive review: the 14 block polygons, the reference points (open circles) and the
-Curie depth obtained after five review rounds.*
+14 blocks, and the full map is computed block by block.
 
 ---
 
@@ -233,8 +235,8 @@ selected for each block, together with the fill method of every node:
 | ![Fractal index map](figures/fractal_index_map.png) | ![Window size map](figures/window_size_map.png) | ![Fill method map](figures/fill_method_map.png) |
 
 The fill-method map documents how each node was obtained: `0` direct fit, `1` fallback
-spectral band, `2/3` nearest block, `4` nearest grid node. In the example run 179 of the 180
-nodes are direct fits (`direct`), with a single node filled by the fallback band.
+spectral band, `2/3` nearest block, `4` nearest grid node. In the example run 3490 of the
+4131 nodes are direct fits, and the remaining 641 are filled with the fallback spectral band.
 
 ---
 
@@ -249,26 +251,6 @@ Curie-depth field is converted to surface heat flow on the held-out fold.
 *Five-fold spatial split of the heat-flow sites; the last panel shows all 625 sites. The
 folds are built block by block so that the test points are spatially separated from the
 training points.*
-
-Heat flow is used to build the reference Curie depths, so its agreement with a Curie-depth
-model is **not** an independent measure of accuracy and is **not** used to tune the model
-here. It is reported in [`validation/cross_validation_summary.txt`](validation/cross_validation_summary.txt)
-only so that the recovered field can be compared with published models in a common currency:
-
-| Model | RMSE (mW m⁻²) | MAE (mW m⁻²) | Correlation |
-| --- | --- | --- | --- |
-| *final_curie_depth* (this study) | **33.48 ± 0.93** | **28.90 ± 0.79** | 0.158 ± 0.067 |
-| *data_jlm* (this study) | 34.97 ± 1.22 | 31.33 ± 0.64 | 0.053 ± 0.028 |
-| *curie_depth_map* (this study) | 35.95 ± 1.22 | 32.50 ± 0.68 | 0.201 ± 0.055 |
-| 41598_2017_srep45129 | 46.58 ± 0.55 | 42.87 ± 0.90 | 0.217 ± 0.067 |
-| *curie_isotherm_depth_xyz* | 54.60 ± 1.55 | 48.88 ± 1.66 | 0.113 ± 0.042 |
-
-The RMSE and MAE of the models produced in this study are the lowest of the set, while the
-linear correlation with the observed heat flow stays low for **every** model, including the
-published ones. The low correlation is therefore a property of the heat-flow-to-Curie-depth
-comparison itself, controlled jointly by the adopted thermophysical parameters, by the
-conversion model and by the sparse and uneven distribution of the heat-flow sites; it is not
-a specific deficiency of one inversion.
 
 ---
 
@@ -313,7 +295,7 @@ including the published ones.
 
 ```
 CurieInversion_Ordos/
-├── curie_block_bayes_three_class_prior_inversion.py   # main inversion program
+├── curie_block_bayes_inversion.py                     # main inversion program
 ├── blocks/                                            # 14 tectonic-block polygons
 ├── data/                                              # magnetic anomaly, reference depths, faults
 ├── utilities/
@@ -353,14 +335,14 @@ Dependencies: `numpy`, `scipy`, `pandas`, `scikit-learn`, `optuna`, `matplotlib`
 Run from the repository root so that the relative paths resolve:
 
 ```bash
-python curie_block_bayes_three_class_prior_inversion.py
+python curie_block_bayes_inversion.py
 ```
 
 All settings have defaults that point at the files in this repository. They can be
 overridden with a JSON configuration file:
 
 ```bash
-python curie_block_bayes_three_class_prior_inversion.py --config config.example.json
+python curie_block_bayes_inversion.py --config config.example.json
 ```
 
 | Setting | Meaning |
@@ -414,7 +396,6 @@ Written into `output_dir`:
 | `fill_method_map.txt` | how each node was filled |
 | `raw_nan_mask_map.txt` | mask of the nodes left empty by the direct fit |
 | `*.png` | maps of the Curie depth, uncertainty, `Zt`, `Z0`, block parameters and fill method |
-| `review_maps/` | preview figures, per-round parameters and the re-optimization history |
 
 ---
 

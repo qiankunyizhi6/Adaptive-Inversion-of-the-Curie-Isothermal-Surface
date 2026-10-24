@@ -1,146 +1,160 @@
 Optimal parameters of each tectonic block
-==================================================================
-The program optimizes directly against the reference Curie depths Zb(km); heat flow
-is not recomputed. The spectral fitting bands are real wavenumber ranges (km^-1), not
-integer indices. The uncertainty dZb is not part of the optimization: it is computed
-afterwards over the full map and used only for the independent assessment of the model.
+========================================
+The program optimizes directly against the reference Curie depths Zb(km); heat flow is not recomputed.
+The spectral fitting bands are real wavenumber ranges (km^-1), not integer indices.
+The uncertainty dZb is not part of the optimization: it is computed afterwards over the full map and used only for the independent assessment of the model.
+
+block_10:
+  status: optimized
+  b2: 2.500
+  window_size: 3.200 deg
+  Zt k-range: [0.035767, 0.065449] km^-1
+  Z0 k-range: [0.018742, 0.027153] km^-1
+  Zb RMSE: 4.815789 km
+  loss: 2.196902
+  mean ΔZb: nan km
+  valid true points: 7
+
+block_11:
+  status: optimized
+  b2: 1.700
+  window_size: 2.800 deg
+  Zt k-range: [0.027000, 0.061111] km^-1
+  Z0 k-range: [0.004102, 0.022218] km^-1
+  Zb RMSE: 4.685430 km
+  loss: 1.040603
+  mean ΔZb: nan km
+  valid true points: 3
+
+block_12:
+  status: optimized
+  b2: 0.500
+  window_size: 4.400 deg
+  Zt k-range: [0.063784, 0.072524] km^-1
+  Z0 k-range: [0.016828, 0.039585] km^-1
+  Zb RMSE: 6.086751 km
+  loss: 2.212254
+  mean ΔZb: nan km
+  valid true points: 6
+
+block_13:
+  status: optimized
+  b2: 2.200
+  window_size: 3.200 deg
+  Zt k-range: [0.047457, 0.088952] km^-1
+  Z0 k-range: [0.003406, 0.033949] km^-1
+  Zb RMSE: 4.780398 km
+  loss: 3.100583
+  mean ΔZb: nan km
+  valid true points: 40
+
+block_14:
+  status: optimized
+  b2: 1.900
+  window_size: 4.800 deg
+  Zt k-range: [0.031283, 0.071369] km^-1
+  Z0 k-range: [0.004595, 0.023989] km^-1
+  Zb RMSE: 3.142540 km
+  loss: 3.975873
+  mean ΔZb: nan km
+  valid true points: 1
 
 block_1:
   status: optimized
-  b2: 0.900
+  b2: 1.400
   window_size: 5.000 deg
-  Zt k-range: [0.044107, 0.071453] km^-1
-  Z0 k-range: [0.015929, 0.029336] km^-1
-  Zb RMSE: 1.077171 km
-  loss: 1.674822
-  valid reference points: 6
+  Zt k-range: [0.041865, 0.086051] km^-1
+  Z0 k-range: [0.017468, 0.029868] km^-1
+  Zb RMSE: 1.042901 km
+  loss: 1.915644
+  mean ΔZb: nan km
+  valid true points: 6
 
 block_2:
-  status: optimized
+  status: no_true_points_default
   b2: 1.000
   window_size: 3.000 deg
   Zt k-range: [0.030000, 0.080000] km^-1
   Z0 k-range: [0.005000, 0.055000] km^-1
   Zb RMSE: 1000.000000 km
   loss: nan
-  valid reference points: 0
+  mean ΔZb: nan km
+  valid true points: 0
 
 block_3:
   status: optimized
-  b2: 1.200
-  window_size: 4.800 deg
-  Zt k-range: [0.043583, 0.086060] km^-1
-  Z0 k-range: [0.005327, 0.027030] km^-1
-  Zb RMSE: 2.149008 km
-  loss: 3.094418
-  valid reference points: 3
+  b2: 1.500
+  window_size: 4.000 deg
+  Zt k-range: [0.042787, 0.061755] km^-1
+  Z0 k-range: [0.019662, 0.024255] km^-1
+  Zb RMSE: 0.273040 km
+  loss: 0.939707
+  mean ΔZb: nan km
+  valid true points: 1
 
 block_4:
   status: optimized
   b2: 0.400
-  window_size: 3.200 deg
-  Zt k-range: [0.057674, 0.088932] km^-1
-  Z0 k-range: [0.008263, 0.049536] km^-1
-  Zb RMSE: 8.263973 km
-  loss: 18.106556
-  valid reference points: 14
+  window_size: 2.400 deg
+  Zt k-range: [0.061203, 0.087664] km^-1
+  Z0 k-range: [0.005818, 0.049952] km^-1
+  Zb RMSE: 8.148496 km
+  loss: 2.480782
+  mean ΔZb: nan km
+  valid true points: 13
 
 block_5:
   status: optimized
-  b2: 0.000
-  window_size: 2.600 deg
-  Zt k-range: [0.052974, 0.074184] km^-1
-  Z0 k-range: [0.003560, 0.052377] km^-1
-  Zb RMSE: 5.830532 km
-  loss: 15.565806
-  valid reference points: 25
+  b2: 1.900
+  window_size: 4.200 deg
+  Zt k-range: [0.049553, 0.071652] km^-1
+  Z0 k-range: [0.004341, 0.020925] km^-1
+  Zb RMSE: 3.988800 km
+  loss: 2.655974
+  mean ΔZb: nan km
+  valid true points: 9
 
 block_6:
   status: optimized
-  b2: 0.500
+  b2: 2.100
   window_size: 5.000 deg
-  Zt k-range: [0.041283, 0.068593] km^-1
-  Z0 k-range: [0.016901, 0.039739] km^-1
-  Zb RMSE: 3.134920 km
-  loss: 7.974587
-  valid reference points: 11
+  Zt k-range: [0.044875, 0.071507] km^-1
+  Z0 k-range: [0.012385, 0.031586] km^-1
+  Zb RMSE: 3.135322 km
+  loss: 2.240131
+  mean ΔZb: nan km
+  valid true points: 11
 
 block_7:
   status: optimized
-  b2: 0.700
+  b2: 1.000
   window_size: 3.000 deg
-  Zt k-range: [0.052810, 0.087134] km^-1
-  Z0 k-range: [0.017061, 0.052446] km^-1
-  Zb RMSE: 2.600020 km
-  loss: 5.057467
-  valid reference points: 9
+  Zt k-range: [0.063864, 0.084346] km^-1
+  Z0 k-range: [0.013228, 0.047069] km^-1
+  Zb RMSE: 2.955906 km
+  loss: 2.153822
+  mean ΔZb: nan km
+  valid true points: 9
 
 block_8:
   status: optimized
-  b2: 2.700
-  window_size: 4.600 deg
-  Zt k-range: [0.046872, 0.067439] km^-1
-  Z0 k-range: [0.002036, 0.022626] km^-1
-  Zb RMSE: 4.527676 km
-  loss: 11.348586
-  valid reference points: 17
+  b2: 1.400
+  window_size: 4.800 deg
+  Zt k-range: [0.058039, 0.078099] km^-1
+  Z0 k-range: [0.010410, 0.054559] km^-1
+  Zb RMSE: 5.270752 km
+  loss: 3.677576
+  mean ΔZb: nan km
+  valid true points: 17
 
 block_9:
   status: optimized
-  b2: 1.500
+  b2: 1.100
   window_size: 2.200 deg
-  Zt k-range: [0.063916, 0.078714] km^-1
-  Z0 k-range: [0.011539, 0.035353] km^-1
-  Zb RMSE: 5.265911 km
-  loss: 11.942077
-  valid reference points: 20
+  Zt k-range: [0.046306, 0.084881] km^-1
+  Z0 k-range: [0.017052, 0.033613] km^-1
+  Zb RMSE: 5.682228 km
+  loss: 2.031307
+  mean ΔZb: nan km
+  valid true points: 14
 
-block_10:
-  status: optimized
-  b2: 1.200
-  window_size: 2.400 deg
-  Zt k-range: [0.053228, 0.082927] km^-1
-  Z0 k-range: [0.002984, 0.052049] km^-1
-  Zb RMSE: 5.899052 km
-  loss: 14.498259
-  valid reference points: 19
-
-block_11:
-  status: optimized
-  b2: 0.400
-  window_size: 3.200 deg
-  Zt k-range: [0.026507, 0.085000] km^-1
-  Z0 k-range: [0.017925, 0.023431] km^-1
-  Zb RMSE: 4.837850 km
-  loss: 14.637347
-  valid reference points: 3
-
-block_12:
-  status: optimized
-  b2: 0.100
-  window_size: 2.400 deg
-  Zt k-range: [0.055913, 0.065378] km^-1
-  Z0 k-range: [0.019152, 0.040768] km^-1
-  Zb RMSE: 5.835151 km
-  loss: 10.033334
-  valid reference points: 6
-
-block_13:
-  status: optimized
-  b2: 2.100
-  window_size: 3.200 deg
-  Zt k-range: [0.053368, 0.079431] km^-1
-  Z0 k-range: [0.004785, 0.035016] km^-1
-  Zb RMSE: 4.784309 km
-  loss: 12.256027
-  valid reference points: 40
-
-block_14:
-  status: optimized
-  b2: 0.900
-  window_size: 4.800 deg
-  Zt k-range: [0.055475, 0.086724] km^-1
-  Z0 k-range: [0.006282, 0.035812] km^-1
-  Zb RMSE: 4.083141 km
-  loss: 4.348473
-  valid reference points: 6
